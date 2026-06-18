@@ -1,0 +1,76 @@
+#set page(paper: "a4", margin: (top: 2cm, bottom: 2cm, left: 2cm, right: 2cm))
+#set text(size: 10pt, lang: "de", font: "Linux Libertine")
+#set par(justify: false, leading: 0.6em)
+
+// -- Header with photo and personal data --
+#grid(
+  columns: (3.5cm, 1fr),
+  gutter: 1cm,
+  [
+    <%= if photo_markup != "" do %>
+    <%= photo_markup %>
+    <% else %>
+    #box(
+      width: 3.5cm,
+      height: 4.5cm,
+      fill: rgb("#e5e7eb"),
+      stroke: 0.5pt + rgb("#d1d5db"),
+      radius: 2pt,
+      align(center + horizon, text(size: 8pt, fill: rgb("#9ca3af"))[Foto])
+    )
+    <% end %>
+  ],
+  [
+    #text(size: 18pt, weight: "bold")[Lebenslauf]
+    #v(0.6cm)
+    <%= personal_data %>
+  ],
+)
+
+#v(0.6cm)
+#line(length: 100%, stroke: 0.5pt + rgb("#d1d5db"))
+#v(0.4cm)
+
+<%= if work_experience != "" do %>
+// -- Berufserfahrung --
+#text(size: 13pt, weight: "bold")[Berufserfahrung]
+#v(0.3cm)
+<%= work_experience %>
+#v(0.4cm)
+<% end %>
+
+<%= if education != "" do %>
+// -- Ausbildung --
+#text(size: 13pt, weight: "bold")[Ausbildung]
+#v(0.3cm)
+<%= education %>
+#v(0.4cm)
+<% end %>
+
+<%= if further_training != "" do %>
+// -- Weiterbildungen --
+#text(size: 13pt, weight: "bold")[Weiterbildungen]
+#v(0.3cm)
+<%= further_training %>
+#v(0.4cm)
+<% end %>
+
+<%= if skills != "" do %>
+// -- Kenntnisse --
+#text(size: 13pt, weight: "bold")[Kenntnisse]
+#v(0.3cm)
+<%= skills %>
+#v(0.4cm)
+<% end %>
+
+<%= if interests != "" do %>
+// -- Interessen --
+#text(size: 13pt, weight: "bold")[Interessen]
+#v(0.3cm)
+<%= interests %>
+<% end %>
+
+<%= if extra != "" do %>
+#v(0.4cm)
+<%= extra %>
+<% end %>
